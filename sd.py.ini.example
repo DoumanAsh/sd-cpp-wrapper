@@ -1,0 +1,28 @@
+[DEFAULT]
+sd_bin          = "../sd"
+batch-count     = 2
+model           = "../models/Stable-diffusion/AnythingXL_xl.safetensors"
+upscale-model   = "../models/RealESRGAN/RealESRGAN_x4plus_anime_6B.pth"
+vae             = "../models/VAE/kl-f8-anime2.safetensors"
+lora_dir        = "../models/Lora"
+height          = 512
+weight          = 512
+# unconditional guidance scale
+cfg-scale       = 7.0
+# strength for noising/unnoising
+strength        = 0.9
+control-strength= 0.9
+sampling-method = "euler_a"
+steps           = 30
+seed            = -1
+clip-skip       = -1
+prompt          = "Cute white haired beauty"
+negative-prompt = ""
+
+# OS specific overrides go here
+[LINUX]
+
+[OSX]
+
+[WIN32]
+sd_bin = "./sd.exe"

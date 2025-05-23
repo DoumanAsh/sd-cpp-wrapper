@@ -1,0 +1,12 @@
+[project]
+name = "sd-py"
+version = "0.1.0"
+description = "Simple wrapper script over stable-diffusion.cpp"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.401",
+]
