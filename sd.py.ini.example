@@ -16,6 +16,8 @@ sampling-method = "euler_a"
 steps           = 30
 seed            = -1
 clip-skip       = -1
+vae-on-cpu      = false
+vae-tiling      = false
 prompt          = "Cute white haired beauty"
 negative-prompt = ""
 

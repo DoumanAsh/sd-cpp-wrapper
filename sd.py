@@ -38,6 +38,15 @@ class Config:
         else:
             return fallback
 
+    def get_bool(self, key: str) -> bool:
+        option = self.get_optional_str(key)
+        if option is None:
+            return False
+        elif option == "true" or option == "True":
+            return True
+        else:
+            return False
+
     def sd_img_out(self) -> str:
         return self.get_str("output_dir", "sd_img_out")
 
@@ -88,6 +97,12 @@ class Config:
 
     def batch_count(self) -> str | None:
         return self.get_optional_str("batch-count")
+
+    def vae_tiling(self) -> bool:
+        return self.get_bool("vae-tiling")
+
+    def vae_on_cpu(self) -> bool:
+        return self.get_bool("vae-on-cpu")
 
     def prompt(self) -> str:
         return self.get_str("prompt", "cute girl")
@@ -160,6 +175,14 @@ def main():
         args.append(control_net)
         args.append("--control-strength")
         args.append(config.control_strength())
+
+    vae_tiling = config.vae_tiling();
+    if vae_tiling:
+        args.append("--vae-tiling")
+
+    vae_on_cpu = config.vae_on_cpu();
+    if vae_on_cpu:
+        args.append("--vae-on-cpu")
 
     subprocess.run(args, shell=False, check=False, capture_output=False, cwd=run_cwd)
 
