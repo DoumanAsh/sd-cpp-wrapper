@@ -29,3 +29,4 @@ negative-prompt = ""
 
 [WIN32]
 sd_bin = "./sd.exe"
+#env_path = "Extra PATH to append for running sd_bin"

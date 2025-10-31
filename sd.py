@@ -2,7 +2,7 @@
 
 import subprocess
 from sys import platform
-from os import path, mkdir
+from os import path, mkdir, environ, pathsep
 from configparser import ConfigParser
 from datetime import datetime
 
@@ -82,6 +82,9 @@ class Config:
 
     def model(self) -> str | None:
         return self.get_optional_str("model")
+
+    def env_path(self) -> str | None:
+        return self.get_optional_str("env_path")
 
     def embeddings_dir(self) -> str | None:
         return self.get_optional_str("embd_dir")
@@ -192,7 +195,11 @@ def main():
     if vae_on_cpu:
         args.append("--vae-on-cpu")
 
-    subprocess.run(args, shell=False, check=False, capture_output=False, cwd=run_cwd)
+    extra_path = config.env_path()
+    if extra_path is not None:
+        environ["PATH"] = f"{environ['PATH']}{pathsep}{extra_path}"
+
+    subprocess.run(args, shell=False, check=False, capture_output=False, cwd=run_cwd, env=environ)
 
 if __name__ == "__main__":
     try:
