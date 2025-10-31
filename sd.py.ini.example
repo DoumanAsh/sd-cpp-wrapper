@@ -4,7 +4,8 @@ batch-count     = 2
 model           = "../models/Stable-diffusion/AnythingXL_xl.safetensors"
 upscale-model   = "../models/RealESRGAN/RealESRGAN_x4plus_anime_6B.pth"
 vae             = "../models/VAE/kl-f8-anime2.safetensors"
-lora_dir        = "../models/Lora"
+lora_dir        = "../models/lora"
+embd_dir        = "../models/embeddings"
 height          = 512
 weight          = 512
 # unconditional guidance scale

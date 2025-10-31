@@ -83,6 +83,9 @@ class Config:
     def model(self) -> str | None:
         return self.get_optional_str("model")
 
+    def embeddings_dir(self) -> str | None:
+        return self.get_optional_str("embd_dir")
+
     def lora_dir(self) -> str | None:
         return self.get_optional_str("lora_dir")
 
@@ -158,6 +161,11 @@ def main():
     if lora_dir is not None:
         args.append("--lora-model-dir")
         args.append(lora_dir)
+
+    embd_dir = config.embeddings_dir();
+    if embd_dir is not None:
+        args.append("--embd-dir")
+        args.append(embd_dir)
 
     upscale_model = config.upscale_model();
     if upscale_model is not None:
