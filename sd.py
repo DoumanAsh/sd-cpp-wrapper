@@ -162,23 +162,39 @@ def main():
 
     lora_dir = config.lora_dir();
     if lora_dir is not None:
+        if not path.isdir(lora_dir):
+            print("%s: No such directory" % lora_dir)
+            exit(1)
+
         args.append("--lora-model-dir")
-        args.append(lora_dir)
+        args.append(path.abspath(lora_dir))
 
     embd_dir = config.embeddings_dir();
     if embd_dir is not None:
+        if not path.isdir(embd_dir):
+            print("%s: No such directory" % embd_dir)
+            exit(1)
+
         args.append("--embd-dir")
-        args.append(embd_dir)
+        args.append(path.abspath(embd_dir))
 
     upscale_model = config.upscale_model();
     if upscale_model is not None:
+        if not path.isfile(upscale_model):
+            print("%s: No such file" % upscale_model)
+            exit(1)
+
         args.append("--upscale-model")
-        args.append(upscale_model)
+        args.append(path.abspath(upscale_model))
 
     vae = config.vae();
     if vae is not None:
+        if not path.isfile(vae):
+            print("%s: No such file" % vae)
+            exit(1)
+
         args.append("--vae")
-        args.append(vae)
+        args.append(path.abspath(vae))
 
     control_net = config.control_net();
     if control_net is not None:
