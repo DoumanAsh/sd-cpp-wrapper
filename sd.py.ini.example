@@ -6,6 +6,16 @@ upscale-model   = "../models/RealESRGAN/RealESRGAN_x4plus_anime_6B.pth"
 vae             = "../models/VAE/kl-f8-anime2.safetensors"
 lora_dir        = "../models/lora"
 embd_dir        = "../models/embeddings"
+# Recommendations for SDXL's output
+# - 1024 x 1024
+# - 1152 x 896
+# - 896 x 1152
+# - 1216 x 832
+# - 832 x 1216 (most recommended)
+# - 1344 x 768
+# - 768 x 1344
+# - 1536 x 640
+# - 640 x 1536
 height          = 512
 weight          = 512
 # unconditional guidance scale
@@ -20,7 +30,7 @@ clip-skip       = -1
 vae-on-cpu      = false
 vae-tiling      = false
 prompt          = "Cute white haired beauty"
-negative-prompt = ""
+negative-prompt = "worst quality, low quality"
 
 # OS specific overrides go here
 [LINUX]
